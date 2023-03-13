@@ -76,7 +76,14 @@ namespace Calcualtor
             if (numberMode == NumberMode.Big)
                 screen.Text = this.BigNumberCalculation();
             else if (numberMode == NumberMode.Roman)
+            {
+                if (!RomanNumber.CheckIfRoman(screen.Text))
+                {
+                    MessageBox.Show("Nije ispravan rimski broj");
+                    return;
+                }
                 screen.Text = this.RomanNumberCalculation();
+            }
             else
                 screen.Text = this.ComplexNumberCalculation();
 
@@ -253,7 +260,6 @@ namespace Calcualtor
         private string RomanNumberCalculation()
         {
             var _newEnteredNumnber = new RomanNumber(screen.Text);
-
             if (_operationToFinish == "")
             {
                 if (_resultRoman is null) // ako nismo jos ni jednom ukucali broj, pa predhodni razultat ne postoji

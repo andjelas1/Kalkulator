@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Calcualtor
 {
@@ -36,7 +37,14 @@ namespace Calcualtor
 
         private string _romanNumber = "";
         private BigNumber _bigNumber;
-
+        public static bool CheckIfRoman(string str)
+        {
+            string strRegex = @"^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$";
+            if (Regex.IsMatch(str, strRegex))
+                return (true);
+            else
+                return (false);
+        }
         public RomanNumber(string _number)
         {
             _romanNumber = _number;
